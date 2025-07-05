@@ -20,13 +20,22 @@ enum {
     SPATIAL_PARTITION_WALLS
 };
 
-typedef struct SurfaceNode SpatialPartitionCell[3];
+//typedef struct SurfaceNode SpatialPartitionCell[3];
+
+typedef struct BGCheckCell {
+	struct SurfaceNode root[3];
+}
+BGCheckCell;
 
 // Needed for bs bss reordering memes.
 extern s32 unused8038BE90;
 
-extern SpatialPartitionCell gStaticSurfacePartition[NUM_CELLS][NUM_CELLS];
-extern SpatialPartitionCell gDynamicSurfacePartition[NUM_CELLS][NUM_CELLS];
+//extern SpatialPartitionCell gStaticSurfacePartition[NUM_CELLS][NUM_CELLS];
+//extern SpatialPartitionCell gDynamicSurfacePartition[NUM_CELLS][NUM_CELLS];
+
+extern BGCheckCell bgcheck_arealist[NUM_CELLS][NUM_CELLS];
+extern BGCheckCell movebg_head;
+
 extern struct SurfaceNode *sSurfaceNodePool;
 extern struct Surface *sSurfacePool;
 extern s16 sSurfacePoolSize;

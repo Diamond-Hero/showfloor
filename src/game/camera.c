@@ -1849,14 +1849,6 @@ s16 update_default_camera(struct Camera *c) {
         }
     }
 
-    // Make lakitu fly above the gas
-    gasHeight = find_poison_gas_level(cPos[0], cPos[2]);
-    if (gasHeight != -11000.f) {
-        if ((gasHeight += 130.f) > c->pos[1]) {
-            c->pos[1] = gasHeight;
-        }
-    }
-
     if (sMarioCamState->action & ACT_FLAG_HANGING || sMarioCamState->action == ACT_RIDING_HOOT) {
         camFloorHeight = sMarioCamState->pos[1] + 400.f;
         if (c->mode == CAMERA_MODE_FREE_ROAM) {
@@ -5597,13 +5589,6 @@ BAD_RETURN(s32) cutscene_suffocation_stay_above_gas(struct Camera *c) {
     UNUSED u8 filler2[4];
 
     cutscene_goto_cvar_pos(c, 400.f, 0x2800, 0x200, 0);
-    gasLevel = find_poison_gas_level(sMarioCamState->pos[0], sMarioCamState->pos[2]);
-
-    if (gasLevel != FLOOR_LOWER_LIMIT) {
-        if ((gasLevel += 130.f) > c->pos[1]) {
-            c->pos[1] = gasLevel;
-        }
-    }
 }
 
 /**

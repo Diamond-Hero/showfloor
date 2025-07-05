@@ -19,8 +19,10 @@ s32 unused8038BE90;
  * Partitions for course and object surfaces. The arrays represent
  * the 16x16 cells that each level is split into.
  */
-SpatialPartitionCell gStaticSurfacePartition[NUM_CELLS][NUM_CELLS];
-SpatialPartitionCell gDynamicSurfacePartition[NUM_CELLS][NUM_CELLS];
+//SpatialPartitionCell gStaticSurfacePartition[NUM_CELLS][NUM_CELLS];
+//SpatialPartitionCell gDynamicSurfacePartition[NUM_CELLS][NUM_CELLS];
+BGCheckCell bgcheck_arealist[NUM_CELLS][NUM_CELLS];
+BGCheckCell movebg_head;
 
 /**
  * Pools of data to contain either surface nodes or surfaces.
@@ -76,13 +78,13 @@ static struct Surface *alloc_surface(void) {
 /**
  * Iterates through the entire partition, clearing the surfaces.
  */
-static void clear_spatial_partition(SpatialPartitionCell *cells) {
+static void clear_spatial_partition(BGCheckCell *cells) {
     register s32 i = NUM_CELLS * NUM_CELLS;
 
     while (i--) {
-        (*cells)[SPATIAL_PARTITION_FLOORS].next = NULL;
-        (*cells)[SPATIAL_PARTITION_CEILS].next = NULL;
-        (*cells)[SPATIAL_PARTITION_WALLS].next = NULL;
+        cells->root[SPATIAL_PARTITION_FLOORS].next = NULL;
+        cells->root[SPATIAL_PARTITION_CEILS].next = NULL;
+        cells->root[SPATIAL_PARTITION_WALLS].next = NULL;
 
         cells++;
     }
@@ -92,7 +94,7 @@ static void clear_spatial_partition(SpatialPartitionCell *cells) {
  * Clears the static (level) surface partitions for new use.
  */
 static void clear_static_surfaces(void) {
-    clear_spatial_partition(&gStaticSurfacePartition[0][0]);
+    clear_spatial_partition(&bgcheck_arealist[0][0]);
 }
 
 /**
@@ -136,9 +138,9 @@ static void add_surface_to_cell(s16 dynamic, s16 cellX, s16 cellZ, struct Surfac
     newNode->surface = surface;
 
     if (dynamic) {
-        list = &gDynamicSurfacePartition[cellZ][cellX][listIndex];
+        list = &movebg_head.root[listIndex];
     } else {
-        list = &gStaticSurfacePartition[cellZ][cellX][listIndex];
+        list = &bgcheck_arealist[cellZ][cellX].root[listIndex];
     }
 
     // Loop until we find the appropriate place for the surface in the list.
@@ -642,7 +644,10 @@ void clear_dynamic_surfaces(void) {
         gSurfacesAllocated = gNumStaticSurfaces;
         gSurfaceNodesAllocated = gNumStaticSurfaceNodes;
 
-        clear_spatial_partition(&gDynamicSurfacePartition[0][0]);
+        //clear_spatial_partition(&movebg_head);
+		movebg_head.root[SPATIAL_PARTITION_CEILS].next = NULL;
+		movebg_head.root[SPATIAL_PARTITION_WALLS].next = NULL;
+		movebg_head.root[SPATIAL_PARTITION_FLOORS].next = NULL;
     }
 }
 
