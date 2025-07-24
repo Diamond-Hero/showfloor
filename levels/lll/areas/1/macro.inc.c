@@ -1,7 +1,7 @@
 const MacroObject fire_bubble_macro[] = {
-    MACRO_OBJECT(/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -5550,   55,   3685),
-    MACRO_OBJECT(/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -5550,   55,   4040),
-    MACRO_OBJECT(/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -5550,   55,   2750),
+    MACRO_OBJECT(/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -5525,   55,   3685),
+    MACRO_OBJECT(/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -5525,   55,   4040),
+    MACRO_OBJECT(/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -5525,   55,   2750),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -5990,   55,   3685),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -5990,   55,   4040),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -5990,   55,   2750),

@@ -458,7 +458,7 @@ layer_end
 
 .sound_action_landing_water:
 chan_setbank 2
-chan_setinstr 4
+chan_setinstr 5
 chan_setlayer 0, .layer_2CC
 chan_end
 

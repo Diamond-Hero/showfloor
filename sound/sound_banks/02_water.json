@@ -34,6 +34,11 @@
             "release_rate": 208,
             "envelope": "envelope0",
             "sound": "04_land"
+        },
+        "inst5": {
+            "release_rate": 10,
+            "envelope": "envelope0",
+            "sound": "04_land"
         }
     },
     "instrument_list": [
@@ -41,6 +46,7 @@
         "inst1",
         "inst2",
         "inst3",
-        "inst4"
+        "inst4",
+        "inst5"
     ]
 }

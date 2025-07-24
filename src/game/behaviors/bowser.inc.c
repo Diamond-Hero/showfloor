@@ -218,7 +218,7 @@ void bowser_init_camera_actions(void) {
  */
 void bowser_act_wait(void) {
     o->oForwardVel = 0.0f;
-    cur_obj_init_animation_with_sound(BOWSER_ANIM_IDLE);
+    cur_obj_init_animation(BOWSER_ANIM_SLOW_GAIT);
     bowser_init_camera_actions();
 }
 

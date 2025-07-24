@@ -3,9 +3,9 @@
     "sample_bank": "instruments",
     "envelopes": {
         "envelope0": [
-            [2, 32700],
-            [1, 32700],
-            [32700, 29430],
+            [1, 1],
+            [1, 1],
+            [1, 29430],
             "hang"
         ],
         "envelope1": [
@@ -47,22 +47,22 @@
     },
     "instruments": {
         "inst0": {
-            "release_rate": 208,
+            "release_rate": 255,
             "envelope": "envelope0",
             "sound": "19_brass_Eb3"
         },
         "inst1": {
-            "release_rate": 208,
+            "release_rate": 255,
             "envelope": "envelope1",
             "sound": "1A_slap_bass_G#2"
         },
         "inst2": {
-            "release_rate": 128,
+            "release_rate": 255,
             "envelope": "envelope2",
             "sound": "1B_percussive_synth_Eb3"
         },
         "inst3": {
-            "release_rate": 208,
+            "release_rate": 255,
             "envelope": "envelope3",
             "sound": "1C_les_paul_guitar_E2"
         },
@@ -133,7 +133,7 @@
             {"release_rate": 10, "pan": 128, "envelope": "envelope4", "sound": "0D_clave"}
         ],
         "inst4": {
-            "release_rate": 10,
+            "release_rate": 50,
             "normal_range_lo": 24,
             "envelope": "envelope5",
             "sound_lo": "0E_hihat_closed",

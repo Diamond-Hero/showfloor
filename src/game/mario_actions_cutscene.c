@@ -975,31 +975,6 @@ s32 act_teleport_fade_in(struct MarioState *m) {
     return FALSE;
 }
 
-s32 act_shocked(struct MarioState *m) {
-    play_sound_if_no_flag(m, SOUND_MARIO_WAAAOOOW, MARIO_ACTION_SOUND_PLAYED);
-    play_sound(SOUND_MOVING_SHOCKED, m->marioObj->header.gfx.cameraToObject);
-
-    if (set_mario_animation(m, MARIO_ANIM_SHOCKED) == 0) {
-        m->actionTimer++;
-        m->flags |= MARIO_METAL_SHOCK;
-    }
-
-    if (m->actionArg == 0) {
-        mario_set_forward_vel(m, 0.0f);
-        if (perform_air_step(m, 1) == AIR_STEP_LANDED) {
-            play_mario_landing_sound(m, SOUND_ACTION_TERRAIN_LANDING);
-            m->actionArg = 1;
-        }
-    } else {
-        if (m->actionTimer >= 6) {
-            set_mario_action(m, m->health < 0x0100 ? ACT_ELECTROCUTION : ACT_IDLE, 0);
-        }
-        stop_and_set_height_to_floor(m);
-    }
-
-    return FALSE;
-}
-
 s32 act_squished(struct MarioState *m) {
     UNUSED u8 filler[4];
     f32 squishAmount;
@@ -1195,7 +1170,6 @@ s32 mario_execute_cutscene_action(struct MarioState *m) {
         case ACT_BBH_ENTER_SPIN:             cancel = act_bbh_enter_spin(m);             break;
         case ACT_TELEPORT_FADE_OUT:          cancel = act_teleport_fade_out(m);          break;
         case ACT_TELEPORT_FADE_IN:           cancel = act_teleport_fade_in(m);           break;
-        case ACT_SHOCKED:                    cancel = act_shocked(m);                    break;
         case ACT_SQUISHED:                   cancel = act_squished(m);                   break;
     }
     /* clang-format on */

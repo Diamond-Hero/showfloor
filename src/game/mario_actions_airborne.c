@@ -412,14 +412,6 @@ s32 act_double_jump(struct MarioState *m) {
     return FALSE;
 }
 
-s32 act_triple_jump(struct MarioState *m) {
-    play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, SOUND_MARIO_YAHOO);
-
-    set_mario_action(m, ACT_TWIRLING, 0);
-
-    return FALSE;
-}
-
 s32 act_freefall(struct MarioState *m) {
     s32 animation;
 
@@ -1505,7 +1497,6 @@ s32 mario_execute_airborne_action(struct MarioState *m) {
         case ACT_STEEP_JUMP:           cancel = act_steep_jump(m);           break;
         case ACT_BURNING_JUMP:         cancel = act_burning_jump(m);         break;
         case ACT_BURNING_FALL:         cancel = act_burning_fall(m);         break;
-        case ACT_TRIPLE_JUMP:          cancel = act_triple_jump(m);          break;
         case ACT_DIVE:                 cancel = act_dive(m);                 break;
         case ACT_AIR_THROW:            cancel = act_air_throw(m);            break;
         case ACT_BACKWARD_AIR_KB:      cancel = act_backward_air_kb(m);      break;

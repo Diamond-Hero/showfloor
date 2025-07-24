@@ -60,7 +60,6 @@ u32 interact_flame(struct MarioState *, u32, struct Object *);
 u32 interact_snufit_bullet(struct MarioState *, u32, struct Object *);
 u32 interact_clam_or_bubba(struct MarioState *, u32, struct Object *);
 u32 interact_bully(struct MarioState *, u32, struct Object *);
-u32 interact_shock(struct MarioState *, u32, struct Object *);
 u32 interact_mr_blizzard(struct MarioState *, u32, struct Object *);
 u32 interact_hit_from_below(struct MarioState *, u32, struct Object *);
 u32 interact_bounce_top(struct MarioState *, u32, struct Object *);
@@ -95,7 +94,6 @@ static struct InteractionHandler sInteractionHandlers[] = {
     { INTERACT_SNUFIT_BULLET, interact_snufit_bullet },
     { INTERACT_CLAM_OR_BUBBA, interact_clam_or_bubba },
     { INTERACT_BULLY, interact_bully },
-    { INTERACT_SHOCK, interact_shock },
     { INTERACT_BOUNCE_TOP2, interact_bounce_top },
     { INTERACT_MR_BLIZZARD, interact_mr_blizzard },
     { INTERACT_HIT_FROM_BELOW, interact_hit_from_below },
@@ -1031,31 +1029,6 @@ u32 interact_bully(struct MarioState *m, UNUSED u32 interactType, struct Object 
         attack_object(o, interaction);
         bounce_back_from_attack(m, interaction);
         return TRUE;
-    }
-
-    return FALSE;
-}
-
-u32 interact_shock(struct MarioState *m, UNUSED u32 interactType, struct Object *o) {
-    if (!sInvulnerable && !(o->oInteractionSubtype & INT_SUBTYPE_DELAY_INVINCIBILITY)) {
-        u32 actionArg = (m->action & (ACT_FLAG_AIR | ACT_FLAG_ON_POLE | ACT_FLAG_HANGING)) == 0;
-
-        o->oInteractStatus = INT_STATUS_INTERACTED | INT_STATUS_ATTACKED_MARIO;
-        m->interactObj = o;
-
-        take_damage_from_interact_object(m);
-        play_sound(SOUND_MARIO_ATTACKED, m->marioObj->header.gfx.cameraToObject);
-
-        if (m->action & (ACT_FLAG_SWIMMING | ACT_FLAG_METAL_WATER)) {
-            return drop_and_set_mario_action(m, ACT_WATER_SHOCKED, 0);
-        } else {
-            update_mario_sound_and_camera(m);
-            return drop_and_set_mario_action(m, ACT_SHOCKED, actionArg);
-        }
-    }
-
-    if (!(o->oInteractionSubtype & INT_SUBTYPE_DELAY_INVINCIBILITY)) {
-        sDelayInvincTimer = TRUE;
     }
 
     return FALSE;
