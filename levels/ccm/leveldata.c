@@ -19,7 +19,6 @@
 #include "levels/ccm/areas/1/collision.inc.c"
 #include "levels/ccm/areas/2/1/model.inc.c"
 #include "levels/ccm/areas/2/2/model.inc.c"
-#include "levels/ccm/areas/2/3/model.inc.c"
 #include "levels/ccm/areas/3/1/model.inc.c"
 #include "levels/ccm/areas/3/2/model.inc.c"
 #include "levels/ccm/areas/4/1/model.inc.c"

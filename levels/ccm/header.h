@@ -23,7 +23,6 @@ extern const Gfx snow_slider_2_dl_mesh[];
 extern const Gfx snow_slider_3_dl_mesh[];
 extern const Collision snow_slider_collision[];
 extern const Gfx slider_1_dl_mesh[];
-extern const Gfx slider_2_dl_mesh[];
 extern const Gfx slider_3_dl_mesh[];
 extern const Gfx slider_4_dl_mesh[];
 extern const Gfx slider_5_dl_mesh[];

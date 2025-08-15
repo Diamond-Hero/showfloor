@@ -30,6 +30,7 @@ extern const u8 inside_09004800[];
 extern const u8 inside_09005000[];
 extern const u8 inside_09005800[];
 extern const u8 inside_09006000[];
+extern const u8 inside_09006800[];
 extern const u8 inside_09007000[];
 extern const u8 inside_09008000[];
 extern const u8 inside_09009000[];

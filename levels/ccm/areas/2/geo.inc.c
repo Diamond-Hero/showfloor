@@ -16,7 +16,6 @@ const GeoLayout ccm_geo_000B5C[] = {
             GEO_CAMERA(9, 0, 2000, 6000, 0, 0, 0, geo_camera_main),
             GEO_OPEN_NODE(),
                GEO_DISPLAY_LIST(LAYER_OPAQUE, slider_1_dl_mesh),
-               GEO_DISPLAY_LIST(LAYER_OPAQUE, slider_2_dl_mesh),
                GEO_DISPLAY_LIST(LAYER_TRANSPARENT, slider_3_dl_mesh),
                GEO_RENDER_OBJ(),
                GEO_ASM(0, geo_envfx_main),
